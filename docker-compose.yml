@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+  db:
+    image: mongo
+    restart: always
+    volumes:
+      - picturebea_db:/data/db
+
+  backend:
+    build: backend/
+    restart: always
+    depends_on: 
+      - db
+    env_file: .env
+
+  frontend:
+    build: frontend/
+    restart: always
+    ports:
+      - 86:80
+
+volumes:
+  picturebea_db:

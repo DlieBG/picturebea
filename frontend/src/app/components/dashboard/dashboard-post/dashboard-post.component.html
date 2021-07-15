@@ -1,0 +1,19 @@
+<div class="body">
+    <mat-card class="card">
+        <div class="head"></div>
+        <img [src]="imgUrl" (click)="openPost()">
+        <div class="subline">           
+            <div class="likes">
+                <button mat-icon-button (click)="like()">
+                    <mat-icon *ngIf="post.likes.includes(user.userId)" class="icon" color="warn">favorite</mat-icon>
+                    <mat-icon *ngIf="!post.likes.includes(user.userId)" class="icon">favorite_outline</mat-icon>
+                </button>
+                {{post.likes.length}}
+            </div>
+            <div class="comments">
+                {{post.comments.length}}
+                <button mat-icon-button (click)="openPost()"><mat-icon class="icon">chat</mat-icon></button>
+            </div>
+        </div>
+    </mat-card>
+</div>

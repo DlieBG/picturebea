@@ -1,0 +1,12 @@
+<mat-card class="comment" *ngIf="!deleted">
+    <table>
+        <tr>
+            <td>
+                <button mat-icon-button class="remove" *ngIf="comment.user == user.userId" (click)="remove()"><mat-icon>delete</mat-icon></button>
+            </td>
+            <td>
+                {{ comment.text }}
+            </td>
+        </tr>
+    </table>
+</mat-card>

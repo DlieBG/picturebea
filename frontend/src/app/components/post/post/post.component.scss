@@ -1,0 +1,103 @@
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.head {
+    
+}
+
+.edit {
+    float: right;
+    margin-bottom: .75em;
+}
+
+.subline {
+    width: 100%;
+    margin-top: .5em;
+    padding-bottom: 1.75em;
+}
+
+.icon {
+    vertical-align: middle;
+    margin-left: .25em;
+    margin-right: .25em;
+    padding-bottom: .125em;
+}
+
+.likes-count {
+    float: left;
+    padding-left: .75em;
+}
+
+.comments-count {
+    float: right;
+    padding-right: .75em;
+}
+
+.caption {
+    margin: 1.25em 0 .25em .25em;
+    padding-bottom: .75em;
+}
+
+.comments {
+    margin-top: 1em;
+}
+
+.comment-input {
+    width: 100%;
+}
+
+.fab {
+    position: fixed;
+    right: 1em;
+    bottom: 1em;
+}
+
+// PC
+@media (min-width: 1281px) {
+  
+    .card {
+        width: 500px;
+        margin-top: 2em;
+        border-radius: 10px;
+    }
+
+    img {
+        width: 500px;
+        height: 500px;
+    }
+    
+}
+
+// Handy und Tablet hochkant
+@media (min-width: 320px) and (max-width: 1024px), (max-width: 1024px) and (orientation: portrait) {
+
+    .card {
+        width: 300px;
+        margin-top: 2em;
+        border-radius: 10px;
+    }
+
+    img {
+        width: 300px;
+        height: 300px;
+    }
+
+}
+
+// Tablet
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+    .card {
+        width: 400px;
+        margin-top: 2em;
+        border-radius: 10px;
+    }
+
+    img {
+        width: 400px;
+        height: 400px;
+    }
+}

@@ -1,0 +1,43 @@
+<div class="body">
+    <mat-card class="card" *ngIf="post">
+        <div class="head">
+            <button mat-icon-button *ngIf="post.user == user.userId" class="edit" (click)="remove()"><mat-icon>delete</mat-icon></button>
+            <!-- <button mat-icon-button *ngIf="post.user == user.userId" class="edit" (click)="edit()"><mat-icon>edit</mat-icon></button> -->
+        </div>
+        <img [src]="imgUrl">
+        <div class="subline">           
+            <div class="likes-count">
+                <button mat-icon-button (click)="like()">
+                    <mat-icon *ngIf="post.likes.includes(user.userId)" class="icon" color="warn">favorite</mat-icon>
+                    <mat-icon *ngIf="!post.likes.includes(user.userId)" class="icon">favorite_outline</mat-icon>
+                </button>
+                {{post.likes.length}}
+            </div>
+            <div class="comments-count">
+                {{post.comments.length}}
+                <button mat-icon-button><mat-icon class="icon">chat</mat-icon></button>
+            </div>
+        </div>
+        <div class="caption">
+            {{post.caption}}
+        </div>
+        <hr>
+        <div class="comments">
+            <mat-form-field class="comment-input" appearance="fill">
+                <mat-label>Kommentar</mat-label>
+                <input matInput type="text" [(ngModel)]="newComment.text">
+                <button mat-icon-button matSuffix *ngIf="newComment.text" (click)="comment()">
+                    <mat-icon >send</mat-icon>
+                </button>
+            </mat-form-field>
+            
+            <app-post-comment *ngFor="let comment of post.comments" [post]="post" [comment]="comment"></app-post-comment>
+        </div>
+    </mat-card>
+</div>
+
+<div class="fab">
+    <button mat-fab color="primary" (click)="getPost(post._id)">
+        <mat-icon>refresh</mat-icon>
+    </button>
+</div>

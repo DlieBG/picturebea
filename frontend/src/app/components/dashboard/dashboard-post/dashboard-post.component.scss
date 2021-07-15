@@ -1,0 +1,43 @@
+.body {
+    margin-top: 1.5em;
+    margin-left: .5em;
+    margin-right: .5em;
+}
+
+.card {
+    width: 300px;
+    border-radius: 10px;
+}
+
+.head {
+    
+}
+
+img {
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
+}
+
+.subline {
+    width: 100%;
+    margin-top: .2em;
+    padding-bottom: 2em;
+}
+
+.icon {
+    vertical-align: middle;
+    margin-left: .25em;
+    margin-right: .25em;
+    padding-bottom: .125em;
+}
+
+.likes {
+    float: left;
+    padding-left: .75em;
+}
+
+.comments {
+    float: right;
+    padding-right: .75em;
+}

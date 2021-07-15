@@ -1,0 +1,14 @@
+.body {
+    display: flex;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2em;
+}
+
+.fab {
+    position: fixed;
+    right: 1em;
+    bottom: 1em;
+}

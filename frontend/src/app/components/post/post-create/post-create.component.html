@@ -1,0 +1,20 @@
+<div class="body">
+    <mat-card class="card">
+        <div *ngIf="!file">
+            <button mat-stroked-button color="primary" (click)="openFileDialog()">Foto auswählen</button>
+        </div>
+
+        <div *ngIf="file">
+            <img id="preview">
+
+            <mat-form-field class="formfield">
+                <mat-label>Beschreibung</mat-label>
+                <textarea matInput class="input" type="text" placeholder="Irgendeine Beschreibung..." [(ngModel)]="post.caption"></textarea>
+            </mat-form-field>
+
+            <button mat-stroked-button color="warn" (click)="submit()">Posten</button>
+        </div>
+    </mat-card>
+</div>
+
+<input id="inputfile" class="inputfile" type="file" accept="image/*" (change)="fileChange($event)" hidden>
