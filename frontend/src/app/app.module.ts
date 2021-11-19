@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
+import { MatChipsModule } from '@angular/material/chips'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,6 +43,7 @@ import { PostCommentComponent } from './components/post/post-comment/post-commen
     MatCardModule,
     MatProgressSpinnerModule,
     MatInputModule,
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

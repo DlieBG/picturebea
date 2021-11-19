@@ -40,6 +40,8 @@ export class PostComponent implements OnInit {
     this.post$ = this.postService.getPost(postId);
     this.post$.subscribe(
       (data) => {
+        data.ai.objects.sort((a, b) => {return b.confidence - a.confidence});
+        
         this.post = data;
         this.imgUrl = `${environment.apiUrl}/post/${this.post._id}/img`;
       },

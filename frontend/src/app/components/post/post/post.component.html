@@ -1,6 +1,11 @@
 <div class="body">
     <mat-card class="card" *ngIf="post">
         <div class="head">
+            <mat-chip-list class="ship-head" *ngIf="post.ai.adult && (post.ai.adult.isAdultContent || post.ai.adult.isGoryContent || post.ai.adult.isRacyContent)">
+                <mat-chip class="adult" *ngIf="post.ai.adult.isAdultContent">18+</mat-chip>
+                <mat-chip class="gore" *ngIf="post.ai.adult.isGoryContent">Blutig</mat-chip>
+                <mat-chip class="racy" *ngIf="post.ai.adult.isRacyContent">Rassistisch</mat-chip>
+            </mat-chip-list>
             <button mat-icon-button *ngIf="post.user == user.userId" class="edit" (click)="remove()"><mat-icon>delete</mat-icon></button>
             <!-- <button mat-icon-button *ngIf="post.user == user.userId" class="edit" (click)="edit()"><mat-icon>edit</mat-icon></button> -->
         </div>
@@ -17,6 +22,39 @@
                 {{post.comments.length}}
                 <button mat-icon-button><mat-icon class="icon">chat</mat-icon></button>
             </div>
+        </div>
+        <div >
+            <mat-card class="ai" *ngIf="post.ai.description || post.ai.tags">
+                <h4>Künstliche Intelligenz:</h4>
+                <div class="ai-description" *ngIf="post.ai.description">
+                    {{ post.ai.description.captions[0].text }}
+                </div>
+                <div class="ai-objects" *ngIf="post.ai.objects.length > 0">
+                    <h4>Objekte:</h4>
+                    <mat-chip-list>
+                        <mat-chip *ngFor="let object of post.ai.objects;" [class.high]="object.confidence >= .95" [class.medium]=".95 > object.confidence && object.confidence > .90" [class.low]="object.confidence < .90">{{ object.object }}</mat-chip>
+                    </mat-chip-list>
+                </div>
+                <div class="ai-faces" *ngIf="post.ai.faces.length > 0">
+                    <h4>Gesichter:</h4>
+                    <mat-chip-list>
+                        <mat-chip class="face" *ngFor="let face of post.ai.faces;">{{ face.gender }} {{ face.age }} years old</mat-chip>
+                    </mat-chip-list>
+                </div>
+                <div class="ai-brands" *ngIf="post.ai.brands.length > 0">
+                    <h4>Marken:</h4>
+                    <mat-chip-list>
+                        <mat-chip class="brand" *ngFor="let brand of post.ai.brands;">{{ brand.name }}</mat-chip>
+                    </mat-chip-list>
+                </div>
+                <div class="ai-tags" *ngIf="post.ai.tags">
+                    <h4>Tags:</h4>
+                    <mat-chip-list>
+                        <mat-chip *ngFor="let tag of post.ai.tags;" [class.high]="tag.confidence >= .95" [class.medium]=".95 > tag.confidence && tag.confidence > .90" [class.low]="tag.confidence < .90">{{ tag.name }}</mat-chip>
+                    </mat-chip-list>
+                </div>
+            </mat-card>
+            
         </div>
         <div class="caption">
             {{post.caption}}

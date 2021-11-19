@@ -3,6 +3,8 @@ import { Request, Response } from 'express';
 import config from '../config';
 import * as db_pool from '../db';
 import sharp from 'sharp';
+import { ComputerVisionClient } from '@azure/cognitiveservices-computervision';
+import { ApiKeyCredentials } from '@azure/ms-rest-js';
 
 export class PostController {
 
@@ -118,18 +120,19 @@ export class PostController {
                 .resize(600, 600)
                 .toBuffer();
 
+            console.log(meta.orientation)
             switch(meta.orientation)
             {
                 case 8:
                     picture = await sharp(picture)
                         .resize(600, 600)
-                        .rotate(270)
+                        .rotate(180)
                         .toBuffer();
 
                 case 6:
                     picture = await sharp(picture)
                         .resize(600, 600)
-                        .rotate(90)
+                        .rotate(270)
                         .toBuffer();
 
                 case 3:
@@ -144,13 +147,24 @@ export class PostController {
             res.sendStatus(400);
             return;
         }
+
+        let ai = {};
         
-        
+        if(config.ai_key != '' && config.ai_endpoint != '') {
+            const key = config.ai_key;
+            const endpoint = config.ai_endpoint;
+            const computerVisionClient = new ComputerVisionClient(new ApiKeyCredentials({ inHeader: { 'Ocp-Apim-Subscription-Key': key } }), endpoint);
+            ai = await computerVisionClient.analyzeImageInStream(picture, { visualFeatures: ['Tags', 'Description', 'Adult', 'Objects', 'Brands', 'Faces'] });
+
+            console.log(ai)
+        }
+
         col.insertOne(
             {
                 user: data.userId,
                 caption: req.body.caption,
                 picture: picture,
+                ai,
                 comments: [],
                 likes: []
             }

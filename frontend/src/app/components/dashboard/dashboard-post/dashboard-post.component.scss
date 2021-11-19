@@ -9,8 +9,27 @@
     border-radius: 10px;
 }
 
-.head {
-    
+.ship-head {
+    float: left;
+}
+
+.ship-head .mat-chip {
+    margin-bottom: 1em !important;
+}
+
+.adult {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.racy {
+    background-color: #ff9800;
+    color: #fff;
+}
+
+.gore {
+    background-color: #4caf50;
+    color: #fff;
 }
 
 img {

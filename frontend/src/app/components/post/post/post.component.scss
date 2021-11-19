@@ -4,8 +4,27 @@
     align-items: center;
 }
 
-.head {
-    
+.ship-head {
+    float: left;
+}
+
+.ship-head .mat-chip {
+    margin-bottom: 1em !important;
+}
+
+.adult {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.racy {
+    background-color: #ff9800;
+    color: #fff;
+}
+
+.gore {
+    background-color: #4caf50;
+    color: #fff;
 }
 
 .edit {
@@ -34,6 +53,67 @@
 .comments-count {
     float: right;
     padding-right: .75em;
+}
+
+.ai {
+    margin-top: 1em;
+    // padding: .5em;
+    // border: 1px solid #4caf50;
+    // border-radius: 18px;
+    // background-color: #4caf4f25;
+
+    color: white;
+    background-color: rgba(64, 156, 255, 0.125);
+}
+
+h4 {
+    font-weight: 400;
+    color: rgb(0, 140, 255);
+    margin-top: .25em;
+    margin-bottom: .5em;
+}
+
+.ai-description {
+    font-size: 1.25em;
+    color: #ff0800;
+    margin-top: .75em;
+    margin-bottom: 1em;
+}
+
+.ai-objects {
+    margin-bottom: 1em;
+}
+
+.ai-faces {
+    margin-bottom: 1em;
+}
+
+.face {
+    background-color: #48abb3;
+}
+
+.ai-brands {
+    margin-bottom: 1em;
+}
+
+.brand {
+    background-color: #a872e6;
+}
+
+.ai-tags {
+    margin-bottom: .25em;
+}
+
+.high {
+    background-color: rgb(255, 80, 80);
+}
+
+.medium {
+    background-color: rgb(255, 185, 55);
+}
+
+.low {
+    background-color: rgba(80, 255, 80, 0.85);
 }
 
 .caption {

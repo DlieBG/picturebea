@@ -1,6 +1,12 @@
 <div class="body">
     <mat-card class="card">
-        <div class="head"></div>
+        <div class="head">
+            <mat-chip-list class="ship-head" *ngIf="post.ai.adult && (post.ai.adult.isAdultContent || post.ai.adult.isGoryContent || post.ai.adult.isRacyContent)">
+                <mat-chip class="adult" *ngIf="post.ai.adult.isAdultContent">18+</mat-chip>
+                <mat-chip class="gore" *ngIf="post.ai.adult.isGoryContent">Blutig</mat-chip>
+                <mat-chip class="racy" *ngIf="post.ai.adult.isRacyContent">Rassistisch</mat-chip>
+            </mat-chip-list>
+        </div>
         <img [src]="imgUrl" (click)="openPost()">
         <div class="subline">           
             <div class="likes">

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Post } from 'src/app/interfaces/post';
+import { AI, Post } from 'src/app/interfaces/post';
 import { PostService } from 'src/app/services/post/post.service';
 
 @Component({
@@ -14,6 +14,7 @@ export class PostCreateComponent implements OnInit {
     _id: '',
     user: '',
     caption: '',
+    ai: {} as AI,
     likes: [],
     comments: []
   };
