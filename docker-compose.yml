@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.2'
 
 services:
   db:
@@ -18,7 +18,7 @@ services:
     build: frontend/
     restart: always
     ports:
-      - 86:80
+      - 8087:80
 
 volumes:
   picturebea_db:

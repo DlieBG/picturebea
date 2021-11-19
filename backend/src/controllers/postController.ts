@@ -120,7 +120,6 @@ export class PostController {
                 .resize(600, 600)
                 .toBuffer();
 
-            console.log(meta.orientation)
             switch(meta.orientation)
             {
                 case 8:
@@ -155,8 +154,6 @@ export class PostController {
             const endpoint = config.ai_endpoint;
             const computerVisionClient = new ComputerVisionClient(new ApiKeyCredentials({ inHeader: { 'Ocp-Apim-Subscription-Key': key } }), endpoint);
             ai = await computerVisionClient.analyzeImageInStream(picture, { visualFeatures: ['Tags', 'Description', 'Adult', 'Objects', 'Brands', 'Faces'] });
-
-            console.log(ai)
         }
 
         col.insertOne(
