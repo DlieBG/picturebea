@@ -18,10 +18,12 @@ export class DashboardPostComponent implements OnInit {
   @Input() user!: AuthUser;
 
   imgUrl!: string;
+  show: boolean = true;
 
   constructor(private postService: PostService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    this.show = !(this.post.ai.adult.isAdultContent || this.post.ai.adult.isGoryContent || this.post.ai.adult.isRacyContent)
     this.imgUrl = `${environment.apiUrl}/post/${this.post._id}/img`;
   }
 

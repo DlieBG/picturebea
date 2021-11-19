@@ -7,7 +7,13 @@
                 <mat-chip class="racy" *ngIf="post.ai.adult.isRacyContent">Gewagt</mat-chip>
             </mat-chip-list>
         </div>
-        <img [src]="imgUrl" (click)="openPost()">
+        <img [src]="imgUrl" (click)="openPost()" *ngIf="show">
+        <div class="not-safe" *ngIf="!show">
+            <p>
+                Dieser Beitrag enthält Inhalte, die nicht für jeden geeignet sind<b>!</b>
+            </p>
+            <button mat-stroked-button color="warn" (click)="show = true">Tortzdem anzeigen</button>
+        </div>
         <div class="subline">           
             <div class="likes">
                 <button mat-icon-button (click)="like()">
