@@ -3,20 +3,20 @@ version: '3.2'
 services:
   db:
     image: mongo
-    restart: always
+    restart: unless-stopped
     volumes:
       - picturebea_db:/data/db
 
   backend:
     build: backend/
-    restart: always
+    restart: unless-stopped
     depends_on: 
       - db
     env_file: .env
 
   frontend:
     build: frontend/
-    restart: always
+    restart: unless-stopped
     ports:
       - 8087:80
 

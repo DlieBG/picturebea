@@ -4,7 +4,7 @@
             <mat-chip-list class="ship-head" *ngIf="post.ai.adult && (post.ai.adult.isAdultContent || post.ai.adult.isGoryContent || post.ai.adult.isRacyContent)">
                 <mat-chip class="adult" *ngIf="post.ai.adult.isAdultContent">18+</mat-chip>
                 <mat-chip class="gore" *ngIf="post.ai.adult.isGoryContent">Blutig</mat-chip>
-                <mat-chip class="racy" *ngIf="post.ai.adult.isRacyContent">Gewagt</mat-chip>
+                <mat-chip class="racy" *ngIf="post.ai.adult.isRacyContent">Freizügig</mat-chip>
             </mat-chip-list>
             <button mat-icon-button *ngIf="post.user == user.userId" class="edit" (click)="remove()"><mat-icon>delete</mat-icon></button>
             <!-- <button mat-icon-button *ngIf="post.user == user.userId" class="edit" (click)="edit()"><mat-icon>edit</mat-icon></button> -->
