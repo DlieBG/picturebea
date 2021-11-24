@@ -18,6 +18,8 @@ export class DashboardComponent implements OnInit {
   user$!: Observable<AuthUser>;
   user!: AuthUser;
 
+  loading: boolean = false;
+
   constructor(private postService: PostService, private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -26,13 +28,16 @@ export class DashboardComponent implements OnInit {
   }
 
   getPosts() {
+    this.loading = true;
+
     this.posts$ = this.postService.getPosts();
     this.posts$.subscribe(
       (data) => {
         this.posts = data;
+        this.loading = false;
       },
       (err) => {
-
+        this.loading = false;
       }
     );
   }

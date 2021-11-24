@@ -20,6 +20,7 @@ import { PostComponent } from './components/post/post/post.component';
 import { PostEditComponent } from './components/post/post-edit/post-edit.component';
 import { PostCreateComponent } from './components/post/post-create/post-create.component';
 import { PostCommentComponent } from './components/post/post-comment/post-comment.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { PostCommentComponent } from './components/post/post-comment/post-commen
     MatProgressSpinnerModule,
     MatInputModule,
     MatChipsModule,
+    ImageCropperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

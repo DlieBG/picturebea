@@ -2,7 +2,7 @@ version: '3.2'
 
 services:
   db:
-    image: mongo
+    image: mongo:4.4
     restart: unless-stopped
     volumes:
       - picturebea_db:/data/db

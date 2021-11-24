@@ -1,18 +1,23 @@
 <div class="body">
     <mat-card class="card">
-        <div *ngIf="!file">
+        <div *ngIf="!(file || imageChangeEvent)">
             <button mat-stroked-button color="primary" (click)="openFileDialog()">Foto auswählen</button>
         </div>
 
-        <div *ngIf="file">
-            <img id="preview">
+        <div *ngIf="file || imageChangeEvent">
+            <image-cropper
+                [imageChangedEvent]="imageChangeEvent"
+                [maintainAspectRatio]="true"
+                [aspectRatio]="1/1"
+                (imageCropped)="imageCropped($event)"
+            ></image-cropper>
 
             <mat-form-field class="formfield">
                 <mat-label>Beschreibung</mat-label>
                 <textarea matInput class="input" type="text" placeholder="Irgendeine Beschreibung..." [(ngModel)]="post.caption"></textarea>
             </mat-form-field>
 
-            <button mat-stroked-button color="warn" (click)="submit()">Posten</button>
+            <button mat-stroked-button color="warn" (click)="submit()" [disabled]="!file">Posten</button>
         </div>
     </mat-card>
 </div>

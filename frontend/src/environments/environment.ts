@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
 
-  apiUrl: 'http://localhost:2984/api'
-  //apiUrl: 'http://10.16.2.3:8087/api'
+  //apiUrl: 'http://localhost:2984/api'
+  apiUrl: 'http://10.16.2.3:2984/api'
 };
 
 /*

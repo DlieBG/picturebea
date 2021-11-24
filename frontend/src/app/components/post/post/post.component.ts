@@ -24,6 +24,8 @@ export class PostComponent implements OnInit {
 
   newComment: Comment = { _id: '', text: '', user: '' };
 
+  loading: boolean = false;
+
   constructor(private postService: PostService, private authService: AuthService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {   
@@ -37,6 +39,8 @@ export class PostComponent implements OnInit {
   }
 
   getPost(postId: string) {
+    this.loading = true;
+
     this.post$ = this.postService.getPost(postId);
     this.post$.subscribe(
       (data) => {
@@ -44,9 +48,11 @@ export class PostComponent implements OnInit {
         
         this.post = data;
         this.imgUrl = `${environment.apiUrl}/post/${this.post._id}/img`;
+
+        this.loading = false;
       },
       (err) => {
-
+        this.loading = false;
       }
     );
   }
@@ -65,12 +71,14 @@ export class PostComponent implements OnInit {
   }
 
   remove() {
+    this.loading = true;
+
     this.postService.removePost(this.post._id).subscribe(
       (data) => {
         this.router.navigate(['']);
       },
       (err) => {
-
+        this.loading = false;
       }
     );
   }

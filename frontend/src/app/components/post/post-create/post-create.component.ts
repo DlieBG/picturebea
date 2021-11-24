@@ -21,6 +21,8 @@ export class PostCreateComponent implements OnInit {
 
   file!: File;
 
+  imageChangeEvent!: Event;
+
   loading: boolean = false;
 
   constructor(private postService: PostService, private router: Router) { }
@@ -33,15 +35,15 @@ export class PostCreateComponent implements OnInit {
   }
 
   fileChange(event: any) {
-    this.file = event.target.files[0];
+    this.imageChangeEvent = event;
+  }
 
-    var reader = new FileReader();
-  
-    reader.onload = (event) => {
-      eval(`document.getElementById("preview").src = event.target.result;`);
-    };
-  
-    reader.readAsDataURL(this.file);
+  imageCropped(event: any) {
+    fetch(event.base64)
+      .then(res => res.blob())
+      .then(blob => {
+        this.file = new File([blob], 'picturebai.png', { type: 'image/png' });
+      });
   }
 
   submit() {
