@@ -21,6 +21,8 @@ export class PostCreateComponent implements OnInit {
 
   file!: File;
 
+  loading: boolean = false;
+
   constructor(private postService: PostService, private router: Router) { }
 
   ngOnInit(): void {
@@ -43,12 +45,14 @@ export class PostCreateComponent implements OnInit {
   }
 
   submit() {
+    this.loading = true;
+
     this.postService.postPost(this.post, this.file).subscribe(
       (data) => {
         this.router.navigate(['post', data.postId]);
       },
       (err) => {
-
+        this.loading = false;
       }
     );
   }

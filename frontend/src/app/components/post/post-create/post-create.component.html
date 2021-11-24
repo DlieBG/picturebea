@@ -18,3 +18,9 @@
 </div>
 
 <input id="inputfile" class="inputfile" type="file" accept="image/*" (change)="fileChange($event)" hidden>
+
+<div class="loader" *ngIf="loading">
+    <div class="center">
+        <mat-spinner></mat-spinner>
+    </div>
+</div>
